@@ -4,3 +4,19 @@
     margin: 0;
     padding: 0;
 }
+
+#image-container
+{
+    display: flex;
+    flex-direction: row-reverse;
+    float: right;
+}
+
+#image-container>img
+{
+    display: flex;
+    width: 130px;
+    height: 140px;
+    margin: 20px;
+    border: solid 2px gray;
+}
