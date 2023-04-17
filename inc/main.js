@@ -5,7 +5,7 @@ let words = ['A double-handed sword', 'A medieval set of armor', 'A large castle
 let images = ['sword.png', 'armor.png', 'castle.png', 'bow.png', 'catapult.png'];
 
 // Declare variables
-$checkedCounter = 0;
+$checkedWords = 0, $checkedImages = 0, $selectedImage = "", $selectedWord = "";
 
 function init()
 {
@@ -27,18 +27,44 @@ function init()
 
 $(document).ready(function() {
     $("#image-container img").on("click", function() {
-        console.log($(this));
-        $(this).css('border-color', 'red');
-        $checkedCounter++;
-        console.log($checkedCounter);
-
-        if ($checkedCounter == 2)
+        $(this).addClass('selected');
+        $selectedImage = $(this);
+        $checkedImages++;
+        if ($selectedImage != "" && $checkedImages > 1 && $selectedWord != "")
         {
-            $checkedCounter = 0;
-            $("#image-container img").css('border-color', 'gray');
-            console.log('alert!!!!');
+            checkState();
+            $selectedImage = "";
+            $("#image-container img").removeClass('selected');
+            $checkedImages = 0;
         }
     })
+
+    $("#word-container p").on("click", function() {
+        $(this).addClass('selected');
+        $selectedWord = $(this);
+        $checkedWords++;
+        if ($selectedWord != "" && $checkedWords > 1 && $selectedImage != "")
+        {
+            checkState();
+            $selectedWord = "";
+            $("#word-container p").removeClass('selected');
+            $checkedWords = 0;
+        }
+    })
+
+    function checkState()
+    {
+        if ($selectedWord.innerHTML = $selectedImage.src && $selectedWord != "" && $selectedImage != "")
+        {
+            $selectedWord.addClass('match');
+            $selectedImage.addClass('match');
+            console.log($selectedWord);
+            console.log($selectedImage);
+        } else
+        {
+            console.log('lose');
+        }
+    }
 })
 
 
