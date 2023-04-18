@@ -10,8 +10,8 @@
 <body>
     <div id="flex-container">
         <div id="game-container">
-            <div id="word-container"></div>
-            <div id="image-container"></div>
+            <!-- <div id="word-container"></div>
+            <div id="image-container"></div> -->
         </div>
     </div>
 

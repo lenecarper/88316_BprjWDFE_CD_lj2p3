@@ -17,15 +17,32 @@
 {
     display: flex;
     justify-content: center;
-    border: 1px solid black;
+    height: 15vh;
 }
 
-#image-container
+#game-container > img
+{
+    display: flex;
+    width: 130px;
+    height: 140px;
+    margin: 20px;
+    border: solid 2px gray;
+}
+
+#game-container > p
+{
+    padding: 10px;
+    border: solid 2px gray;
+    color: #414141;
+    margin: 20px;
+}
+
+/* #image-container
 {
     float: right;
-}
+} */
 
-#image-container > img
+/* #image-container > img
 {
     display: flex;
     width: 130px;
@@ -40,7 +57,7 @@
     border: solid 2px gray;
     color: #414141;
     margin: 20px;
-}
+} */
 
 .selected
 {
