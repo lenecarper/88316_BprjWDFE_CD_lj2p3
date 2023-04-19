@@ -5,7 +5,7 @@ let words = ['A double-handed sword', 'A medieval set of armor', 'A large castle
 let images = ['sword.png', 'armor.png', 'castle.png', 'bow.png', 'catapult.png'];
 
 // Declare variables
-$checkedWords = 0, $checkedImages = 0, $selectedImage = "", $selectedWord = "";
+$checkedWords = 0, $checkedImages = 0, $selectedImage = "", $selectedWord = "", matches = 0;
 
 function init()
 {
@@ -14,7 +14,7 @@ function init()
         var img = document.createElement("img");
         img.src = "img/" + images[i];
         var src = document.getElementById("game-container");
-        src.appendChild(img);
+        src.append("<div id='card" + [i + 1] + ">" + "</div>");
     }
 
     for (let i = 0; i < words.length; i++)
@@ -26,19 +26,6 @@ function init()
 }
 
 $(document).ready(function() {
-    // $("#image-container img").on("click", function() {
-    //     $(this).addClass('selected');
-    //     $selectedImage = $(this);
-    //     $checkedImages++;
-    //     if ($selectedImage != "" && $checkedImages > 1 && $selectedWord != "")
-    //     {
-    //         checkState();
-    //         $selectedImage = "";
-    //         $("#image-container img").removeClass('selected');
-    //         $checkedImages = 0;
-    //     }
-    // })
-
     $("#game-container p, img").on("click", function() {
         $(this).addClass('selected');
         $selectedWord = $(this);
@@ -58,10 +45,12 @@ $(document).ready(function() {
 
     function checkState()
     {
-        if ($selectedWord.innerHTML == $selectedImage.src && $selectedWord != "" && $selectedImage != "")
+        if ($selectedWord.id == $selectedImage.id && $selectedWord != "")
         {
             $selectedWord.addClass('match');
             $selectedImage.addClass('match');
+            matches++;
+
         } else
         {
             console.log('lose');
