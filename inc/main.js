@@ -29,19 +29,26 @@ function init()
 
 $(document).ready(function() {
     $("#game-container div, img").on("click", function() {
-        $(this).addClass('selected');
-        if ($(this) == document.getElementsByClassName('div'))
+        if ($(this).is('div'))
         {
             $selectedWord = $(this);
+            if ($flipCounter < 2)
+            {
+                $flipCounter++;
+                $(this).addClass('selected');
+            }
             console.log('paragraph');
         }
         else
         {
             $selectedImage = $(this);
+            if ($flipCounter < 2)
+            {
+                $flipCounter++;
+                $(this).addClass('selected');
+            }
             console.log('image');
         }
-        $flipCounter++;
-        console.log($(this));
         if ($flipCounter == 2)
         {
             checkState();
@@ -50,18 +57,21 @@ $(document).ready(function() {
 
     function checkState()
     {
-        if ($flipCounter == 2 && $selectedWord.className == $selectedImage.className && $selectedWord != "")
+        if ($selectedWord.className = $selectedImage.className)
         {
             $selectedWord.addClass('match');
             $selectedImage.addClass('match');
             $matches++;
-            $selectedImage = "";
+            $flipCounter = 0;
             $selectedWord = "";
-
-        } else
+            $selectedImage = "";
+        }
+        else
         {
             console.log('lose');
-            $
+            $selectedWord.removeClass('selected');
+            $selectedImage.removeClass('selected');
+            $flipCounter = 0;
         }
     }
 })
