@@ -93,6 +93,7 @@ $(document).ready(function() {
             $modal.style.display = "block";
             $("#timer").timer('pause');
             $gameState.innerHTML = "You matched every element! Well done!"
+            saveScore();
         }
     }
 
@@ -101,12 +102,33 @@ $(document).ready(function() {
         duration: '30s',
         callback: function() {
             $("#timer").timer('pause');
+            $gameState.innerHTML = "You ran out of time! Try again."
             if (confirm("You ran out of time! Click OK below to retry.")) {
                 location.reload();
             }
         }
     });
 })
+
+// AJAX POST request to save data into database
+function saveScore()
+{
+    // Get the values to save into the database
+    var playerName = $('#username').val();
+    var playerTime = $('#timer').text();
+
+    $.ajax({
+        type: 'POST',
+        url: 'inc/saveData.php',
+        data: {
+            name: playerName,
+            time: playerTime
+        },
+        success: function(data){
+            console.log(data);
+        }
+    });
+}
 
 
 init();

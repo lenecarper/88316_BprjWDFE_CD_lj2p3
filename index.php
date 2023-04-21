@@ -15,7 +15,7 @@
     <p id="winnerText"></p>
     <form method="POST" action="index.php">
         <input type="text" name="username" id="username" maxlength="25" placeholder="Username" required />
-        <input type="submit" name="submit" id="username" value="Save & replay" />
+        <input type="submit" name="submit" id="submit" value="Save & replay" onclick="saveScore()" />
     </form>
     </div>
 
