@@ -9,10 +9,7 @@
 </head>
 <body>
     <div id="flex-container">
-        <div id="game-container">
-            <!-- <div id="word-container"></div>
-            <div id="image-container"></div> -->
-        </div>
+        <div id="game-container"></div>
     </div>
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js'></script>

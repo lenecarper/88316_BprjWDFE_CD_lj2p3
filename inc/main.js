@@ -5,7 +5,7 @@ let words = ['A double-handed sword', 'A medieval set of armor', 'A large castle
 let images = ['sword.png', 'armor.png', 'castle.png', 'bow.png', 'catapult.png'];
 
 // Declare variables
-$checkedWords = 0, $checkedImages = 0, $selectedImage = "", $selectedWord = "", matches = 0;
+$checkedWords = 0, $checkedImages = 0, $selectedImage = "", $selectedWord = "", $matches = 0, $flipCounter = 0;
 
 function init()
 {
@@ -13,47 +13,55 @@ function init()
     {
         var img = document.createElement("img");
         img.src = "img/" + images[i];
+        img.className = 'card' + [i + 1];
         var src = document.getElementById("game-container");
-        src.append("<div id='card" + [i + 1] + ">" + "</div>");
+        src.append(img) + [i + 1];
     }
 
     for (let i = 0; i < words.length; i++)
     {
-        var para = document.createElement("p");
+        var para = document.createElement("div");
+        para.className = 'card' + [i + 1];
         para.innerHTML = words[i];
         document.getElementById("game-container").appendChild(para) + "<br>";
     }
 }
 
 $(document).ready(function() {
-    $("#game-container p, img").on("click", function() {
+    $("#game-container div, img").on("click", function() {
         $(this).addClass('selected');
-        $selectedWord = $(this);
-        $checkedWords++;
-        $selectedImage = $(this);
-        $checkedImages++;
-        if ($checkedWords > 1 && $checkedImages > 1)
+        if ($(this) == document.getElementsByClassName('div'))
+        {
+            $selectedWord = $(this);
+            console.log('paragraph');
+        }
+        else
+        {
+            $selectedImage = $(this);
+            console.log('image');
+        }
+        $flipCounter++;
+        console.log($(this));
+        if ($flipCounter == 2)
         {
             checkState();
-            $selectedWord   = "";
-            $selectedImage  = "";
-            $("#game-container p").removeClass('selected');
-            $checkedWords = 0;
-            $checkedImages = 0;
         }
     })
 
     function checkState()
     {
-        if ($selectedWord.id == $selectedImage.id && $selectedWord != "")
+        if ($flipCounter == 2 && $selectedWord.className == $selectedImage.className && $selectedWord != "")
         {
             $selectedWord.addClass('match');
             $selectedImage.addClass('match');
-            matches++;
+            $matches++;
+            $selectedImage = "";
+            $selectedWord = "";
 
         } else
         {
             console.log('lose');
+            $
         }
     }
 })
