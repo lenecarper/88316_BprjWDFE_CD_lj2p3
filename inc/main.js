@@ -5,7 +5,7 @@ let words = ['A double-handed sword', 'A medieval set of armor', 'A large castle
 let images = ['sword.png', 'armor.png', 'castle.png', 'bow.png', 'catapult.png'];
 
 // Declare variables
-$checkedWords = 0, $checkedImages = 0, $selectedImage = "", $selectedWord = "", $matches = 0;   
+$checkedWords = 0, $checkedImages = 0, $selectedImage = "", $selectedWord = "", $matches = 0, $wordClass = "", $imageClass = "";   
 
 function init()
 {
@@ -34,6 +34,7 @@ $(document).ready(function() {
             if ($checkedWords == 0)
             {
                 $selectedWord = $(this);
+                $wordClass = $(this).attr('class');
                 $checkedWords++;
                 $(this).addClass('selected');
                 console.log('paragraph');
@@ -44,6 +45,7 @@ $(document).ready(function() {
             if ($checkedImages == 0)
             {
                 $selectedImage = $(this);
+                $imageClass = $(this).attr('class');
                 $checkedImages++;
                 $(this).addClass('selected');
                 console.log('image');
@@ -57,7 +59,7 @@ $(document).ready(function() {
 
     function checkState()
     {
-        if ($selectedWord.className = $selectedImage.className)
+        if ($wordClass == $imageClass)
         {
             $selectedWord.addClass('match');
             $selectedImage.addClass('match');
@@ -69,8 +71,8 @@ $(document).ready(function() {
         }
         else
         {
-            console.log($selectedWord.className);
-            console.log($selectedImage.className);
+            console.log($wordClass);
+            console.log($imageClass);
             console.log('lose');
             $checkedWords = 0;
             $checkedImages = 0;
