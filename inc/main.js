@@ -5,7 +5,7 @@ let words = ['A double-handed sword', 'A medieval set of armor', 'A large castle
 let images = ['sword.png', 'armor.png', 'castle.png', 'bow.png', 'catapult.png'];
 
 // Declare variables
-$checkedWords = 0, $checkedImages = 0, $selectedImage = "", $selectedWord = "", $matches = 0, $flipCounter = 0;
+$checkedWords = 0, $checkedImages = 0, $selectedImage = "", $selectedWord = "", $matches = 0;   
 
 function init()
 {
@@ -31,25 +31,25 @@ $(document).ready(function() {
     $("#game-container div, img").on("click", function() {
         if ($(this).is('div'))
         {
-            $selectedWord = $(this);
-            if ($flipCounter < 2)
+            if ($checkedWords == 0)
             {
-                $flipCounter++;
+                $selectedWord = $(this);
+                $checkedWords++;
                 $(this).addClass('selected');
+                console.log('paragraph');
             }
-            console.log('paragraph');
         }
         else
         {
-            $selectedImage = $(this);
-            if ($flipCounter < 2)
+            if ($checkedImages == 0)
             {
-                $flipCounter++;
+                $selectedImage = $(this);
+                $checkedImages++;
                 $(this).addClass('selected');
+                console.log('image');
             }
-            console.log('image');
         }
-        if ($flipCounter == 2)
+        if ($checkedWords == 1 && $checkedImages == 1)
         {
             checkState();
         }
@@ -62,16 +62,18 @@ $(document).ready(function() {
             $selectedWord.addClass('match');
             $selectedImage.addClass('match');
             $matches++;
-            $flipCounter = 0;
+            $checkedWords = 0;
+            $checkedImages = 0;
             $selectedWord = "";
             $selectedImage = "";
         }
         else
         {
+            console.log($selectedWord.className);
+            console.log($selectedImage.className);
             console.log('lose');
-            $selectedWord.removeClass('selected');
-            $selectedImage.removeClass('selected');
-            $flipCounter = 0;
+            $checkedWords = 0;
+            $checkedImages = 0;
         }
     }
 })
