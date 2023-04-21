@@ -121,7 +121,7 @@ function saveScore()
         type: 'POST',
         url: 'inc/saveData.php',
         data: {
-            name: playerName,
+            username: playerName,
             time: playerTime
         },
         success: function(data){

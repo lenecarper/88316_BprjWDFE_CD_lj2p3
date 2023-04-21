@@ -71,6 +71,16 @@
     bottom: 45%;
 }
 
+#leaderboard-container
+{
+    font-size: 1.15em !important;
+    position: absolute;
+    bottom: 25%;
+    border: 1px solid red;
+    display: block;
+    padding: 5px;
+}
+
 .modal {
     display: none;
     position: fixed;

@@ -1,3 +1,7 @@
+<?php
+    require ('inc/functions.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +17,7 @@
     <div class="modal-content">
     <span class="close">&times;</span>
     <p id="winnerText"></p>
-    <form method="POST" action="index.php">
+    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <input type="text" name="username" id="username" maxlength="25" placeholder="Username" required />
         <input type="submit" name="submit" id="submit" value="Save & replay" onclick="saveScore()" />
     </form>
@@ -24,6 +28,8 @@
         <div id="timer">Timer</div>
         <div id="gamestate">Click on an image and a paragraph to match them!</div>
     </div>
+
+    <div id="leaderboard-container"><?php getScore(); ?></div>
 
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js'></script>
