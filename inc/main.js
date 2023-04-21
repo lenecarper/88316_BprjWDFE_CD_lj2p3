@@ -5,7 +5,7 @@ let words = ['A double-handed sword', 'A medieval set of armor', 'A large castle
 let images = ['sword.png', 'armor.png', 'castle.png', 'bow.png', 'catapult.png'];
 
 // Declare variables
-$checkedWords = 0, $checkedImages = 0, $selectedImage = "", $selectedWord = "", $matches = 0, $wordClass = "", $imageClass = "";   
+$checkedWords = 0, $checkedImages = 0, $selectedImage = "", $selectedWord = "", $matches = 0, $wordClass = "", $imageClass = "", $modal = document.getElementById('modal'), $span = document.getElementsByClassName('close')[0], $winnerText = document.getElementById('winnerText');
 
 function init()
 {
@@ -57,6 +57,11 @@ $(document).ready(function() {
         }
     })
 
+    $span.onclick = function()
+    {
+        $modal.style.display = "none";
+    }
+
     function checkState()
     {
         if ($wordClass == $imageClass)
@@ -71,11 +76,19 @@ $(document).ready(function() {
         }
         else
         {
+            $selectedWord.removeClass('selected');
+            $selectedImage.removeClass('selected');
             console.log($wordClass);
             console.log($imageClass);
             console.log('lose');
             $checkedWords = 0;
             $checkedImages = 0;
+        }
+
+        if ($matches == 5)
+        {
+            $winnerText.innerHTML = "You won! Please fill in your name below.";
+            $modal.style.display = "block";
         }
     }
 })

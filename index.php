@@ -9,8 +9,20 @@
 </head>
 <body>
     <div id="flex-container">
-        <div id="game-container"></div>
+    <div id="modal" class="modal">
+    <div class="modal-content">
+    <span class="close">&times;</span>
+    <p id="winnerText"></p>
+    <form method="POST" action="index.php">
+        <input type="text" name="username" id="username" maxlength="25" placeholder="Username" required />
+    </form>
     </div>
+
+    </div>
+        <div id="game-container"></div>
+        <div id="timer">Timer</div>
+    </div>
+
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js'></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
