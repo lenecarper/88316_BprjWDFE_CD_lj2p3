@@ -91,6 +91,17 @@ $(document).ready(function() {
             $modal.style.display = "block";
         }
     }
+
+    function timer()
+    {
+        $("#timer").timer({
+            duration: '30s',
+            callback: function() {
+                alert('Time is up!');
+            }
+
+        });
+    }
 })
 
 

@@ -60,6 +60,8 @@
 #timer
 {
     font-size: 1.2em !important;
+    position: absolute;
+    bottom: 50%;
 }
 
 .modal {
