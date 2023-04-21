@@ -92,16 +92,15 @@ $(document).ready(function() {
         }
     }
 
-    function timer()
-    {
-        $("#timer").timer({
-            duration: '30s',
-            callback: function() {
-                alert('Time is up!');
-            }
+    $("#timer").timer({
+        countdown: true,
+        duration: '30s',
+        callback: function() {
+            alert('Time is up!');
+            $("#timer").timer('pause');
+        }
 
-        });
-    }
+    });
 })
 
 
