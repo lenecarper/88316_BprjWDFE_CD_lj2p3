@@ -5,7 +5,7 @@ let words = ['A double-handed sword', 'A medieval set of armor', 'A large castle
 let images = ['sword.png', 'armor.png', 'castle.png', 'bow.png', 'catapult.png'];
 
 // Declare variables
-$checkedWords = 0, $checkedImages = 0, $selectedImage = "", $selectedWord = "", $matches = 0, $wordClass = "", $imageClass = "", $modal = document.getElementById('modal'), $span = document.getElementsByClassName('close')[0], $winnerText = document.getElementById('winnerText');
+$checkedWords = 0, $checkedImages = 0, $selectedImage = "", $selectedWord = "", $matches = 0, $wordClass = "", $imageClass = "", $modal = document.getElementById('modal'), $span = document.getElementsByClassName('close')[0], $winnerText = document.getElementById('winnerText'), $timer = document.getElementById('timer'), $gameState = document.getElementById('gamestate');
 
 function init()
 {
@@ -31,7 +31,7 @@ $(document).ready(function() {
     $("#game-container div, img").on("click", function() {
         if ($(this).is('div'))
         {
-            if ($checkedWords == 0)
+            if ($checkedWords == 0 && $timer.innerHTML != "0 sec")
             {
                 $selectedWord = $(this);
                 $wordClass = $(this).attr('class');
@@ -42,7 +42,7 @@ $(document).ready(function() {
         }
         else
         {
-            if ($checkedImages == 0)
+            if ($checkedImages == 0 && $timer.innerHTML != "0 sec")
             {
                 $selectedImage = $(this);
                 $imageClass = $(this).attr('class');
@@ -73,6 +73,7 @@ $(document).ready(function() {
             $checkedImages = 0;
             $selectedWord = "";
             $selectedImage = "";
+            $gameState.innerHTML = "Correct match. Well done!";
         }
         else
         {
@@ -83,12 +84,15 @@ $(document).ready(function() {
             console.log('lose');
             $checkedWords = 0;
             $checkedImages = 0;
+            $gameState.innerHTML = "Wrong match. Try again!";
         }
 
         if ($matches == 5)
         {
             $winnerText.innerHTML = "You won! Please fill in your name below.";
             $modal.style.display = "block";
+            $("#timer").timer('pause');
+            $gameState.innerHTML = "You matched every element! Well done!"
         }
     }
 
@@ -96,10 +100,11 @@ $(document).ready(function() {
         countdown: true,
         duration: '30s',
         callback: function() {
-            alert('Time is up!');
             $("#timer").timer('pause');
+            if (confirm("You ran out of time! Click OK below to retry.")) {
+                location.reload();
+            }
         }
-
     });
 })
 

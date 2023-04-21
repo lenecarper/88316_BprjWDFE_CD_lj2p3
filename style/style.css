@@ -64,6 +64,13 @@
     bottom: 50%;
 }
 
+#gamestate
+{
+    font-size: 1.15em !important;
+    position: absolute;
+    bottom: 45%;
+}
+
 .modal {
     display: none;
     position: fixed;

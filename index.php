@@ -15,12 +15,14 @@
     <p id="winnerText"></p>
     <form method="POST" action="index.php">
         <input type="text" name="username" id="username" maxlength="25" placeholder="Username" required />
+        <input type="submit" name="submit" id="username" value="Save & replay" />
     </form>
     </div>
 
     </div>
         <div id="game-container"></div>
         <div id="timer">Timer</div>
+        <div id="gamestate">Click on an image and a paragraph to match them!</div>
     </div>
 
 
