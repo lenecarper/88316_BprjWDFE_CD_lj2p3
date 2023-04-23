@@ -18,10 +18,10 @@
             <span class="close">&times;</span>
             <p id="winnerText"></p>
             <!-- Form to set username in after winning -->
-            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <div>
                 <input type="text" name="username" id="username" maxlength="25" placeholder="Username" required />
                 <input type="submit" name="submit" id="submit" value="Save & replay" onclick="saveScore()" />
-            </form>
+            </div>
         </div>
     </div>
     <!-- Main game container -->

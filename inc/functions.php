@@ -20,15 +20,17 @@
     {   // Connect to the SQL database
         $db = db();
 
-        $data = 'SELECT * from score LIMIT 3';
+        $data = 'SELECT * from score ORDER BY userTime DESC LIMIT 3';
         $result = $db->query($data) or die($db->error);
         // Insert all stored data into the database
         $score = $result->fetch_all(MYSQLI_ASSOC);
         // Check if there are any objects in the database
         if (count($score) > 0)
         { // Loop through all the highscores and print them out into the leaderboard
+        echo "<h1>Leaderboard</h1>";
         foreach($score as $point) 
         {
+            echo "<h2 style='border-bottom: 1px solid red;'></h2><br>";
             echo "<div class='leaderboard-username'>" . $point["username"] . "</div>";
             echo "<div class='leaderboard-time'>" . $point["userTime"] . "</div>" . "<br>";
         }

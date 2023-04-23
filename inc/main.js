@@ -167,6 +167,7 @@ function saveScore()
             username: playerName,
             time: playerTime
         },
+        // Upload and log the data, reload page
         success: function(data){
             console.log(data);
         }
